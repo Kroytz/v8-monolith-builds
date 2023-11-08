@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: Setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4.7.1
         with:
           python-version: 3.11.4
 
@@ -94,10 +94,10 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: Setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4.7.1
         with:
           python-version: 3.11.4
 
@@ -109,7 +109,7 @@ jobs:
 
       - name: Install MSVC/MCBuild (Windows)
         if: runner.os == 'Windows'
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v1.3.1
 
       - name: Get target V8 version
         id: version
