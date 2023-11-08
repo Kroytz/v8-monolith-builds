@@ -71,7 +71,6 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, '[Skip]')"
     runs-on: ${{ matrix.config.os }}
     strategy:
-      fail-fast: false
       matrix:
         config:
 
@@ -79,13 +78,11 @@ jobs:
             name: linux
             arch: x64
             lib_name: libv8_monolith.a
-            timeout-minutes: 60
 
           - os: windows-latest
             name: windows
             arch: x64
             lib_name: v8_monolith.lib
-            timeout-minutes: 60
 
 #           - os: macOS-latest
 #             name: macos
@@ -98,15 +95,13 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
 
       - name: Setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.11.4
 
-      - name: Set Swap Space
+      - name: Set Swap Space (Linux)
         if: runner.os == 'Linux'
         uses: pierotofy/set-swap-space@master
         with:
